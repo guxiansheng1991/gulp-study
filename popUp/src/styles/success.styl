@@ -1,0 +1,49 @@
+@import './common.styl'
+
+header-height = 94
+
+body {
+  position: relative
+}
+.star {
+  position: absolute
+  left: mvw(102)
+  top: mvh(160 - header-height)
+  display: flex;
+  justify-content: center
+  align-items: center
+  img {
+    width: mvw(169)
+    height: mvw(14)
+  }
+}
+.success {
+  height: mvw(20)
+  position: absolute
+  left: mvw(139)
+  top: mvh(170 - header-height)
+  display: flex
+  justify-content: center
+  align-items: center
+  img {
+    width: mvw(20)
+    height: mvw(20)
+    margin-right: mvw(10)
+  }
+  span {
+    font-size: 16px
+    color: #000000
+  }
+}
+.state {
+  width: 100%
+  font-size: 14px
+  color: #050505
+  font-weight: lighter
+  position: absolute
+  left: mvw(0)
+  top: mvh(208 - header-height)
+  display: flex
+  justify-content: center
+  align-items: center
+}

@@ -1,0 +1,234 @@
+.tip {
+  color: #f5f5f5;
+  font-size: 12px;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  position: relative;
+/**
+    高度都使用px布局,因为输入法弹起来会压缩整个页面的高度,造成元素的vh被压缩
+   */
+}
+body .imgs {
+  width: 100%;
+  padding: 0 8.266666666666666vw;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+body .imgs img {
+  width: 100%;
+  vertical-align: middle;
+}
+body .rules {
+  width: 100%;
+  background: #fff;
+  padding: 6.133333333333333vw 6.133333333333333vw 18.666666666666668vw;
+  box-sizing: border-box;
+  color: #ccc;
+  font-size: 14px;
+}
+body .rules .rules-title {
+  height: 0;
+  position: relative;
+  border: none;
+}
+body .rules .rules-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2) {
+  body .rules .rules-title::before {
+    width: 200%;
+    height: 200%;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+  }
+}
+@media screen and (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+  body .rules .rules-title::before {
+    width: 300%;
+    height: 300%;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    transform: scale(0.3333);
+    -webkit-transform: scale(0.3333);
+  }
+}
+body .rules .rules-title .rules-title-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .rules .rules-title .rules-title-text div {
+  padding: 0 2.666666666666667vw;
+  background: #fff;
+  margin-top: -10px;
+  z-index: 10;
+}
+body .join {
+  width: 53.86666666666666vw;
+  height: 12.533333333333333vw;
+  position: fixed;
+  left: 22.933333333333334vw;
+  top: 88.71866295264624vh;
+  background: #f8e638;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px 1px #ccc;
+  z-index: 11;
+}
+body .check {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 27.85515320334262vh;
+  box-sizing: border-box;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: none;
+}
+body .check input {
+  border: none;
+  outline: none;
+}
+body .check .wrapper {
+  width: 84vw;
+  height: 218px;
+  background: #fff;
+  border-radius: 5px;
+  padding: 5.866666666666666vw;
+  box-sizing: border-box;
+}
+body .check .wrapper .title {
+  font-size: 16px;
+  color: #4a4a4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .check .wrapper .phone {
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+body .check .wrapper .phone .content {
+  width: 72.26666666666667vw;
+  height: 46px;
+  border-radius: 5px;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+body .check .wrapper .phone .content .input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .check .wrapper .phone .content .input input {
+  display: inline-block;
+  width: 80%;
+  background: none;
+}
+body .check .wrapper .phone .content .btn {
+  width: 26.13333333333333vw;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: none;
+}
+body .check .wrapper .phone .content .btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-left: 1px solid #000;
+}
+@media screen and (min-device-pixel-ratio: 2), (-webkit-min-device-pixel-ratio: 2) {
+  body .check .wrapper .phone .content .btn::before {
+    width: 200%;
+    height: 200%;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+  }
+}
+@media screen and (min-device-pixel-ratio: 3), (-webkit-min-device-pixel-ratio: 3) {
+  body .check .wrapper .phone .content .btn::before {
+    width: 300%;
+    height: 300%;
+    -webkit-transform-origin: left top;
+    transform-origin: left top;
+    transform: scale(0.3333);
+    -webkit-transform: scale(0.3333);
+  }
+}
+body .check .wrapper .verification {
+  height: 66px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+body .check .wrapper .verification .content {
+  width: 72.26666666666667vw;
+  height: 46px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+body .check .wrapper .verification .content .input {
+  width: 12.266666666666666vw;
+  height: 46px;
+  background: #f5f5f5;
+}
+body .check .wrapper .verification .content .input input {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0);
+  text-align: center;
+}
+body .check .close {
+  width: 84vw;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .check .close span {
+  width: 26px;
+  height: 26px;
+  background: #fff;
+  border-radius: 50% 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

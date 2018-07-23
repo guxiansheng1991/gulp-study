@@ -1,0 +1,53 @@
+.tip {
+  color: #f5f5f5;
+  font-size: 12px;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  position: relative;
+}
+.star {
+  position: absolute;
+  left: 27.200000000000003vw;
+  top: 9.192200557103064vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.star img {
+  width: 45.06666666666666vw;
+  height: 3.733333333333334vw;
+}
+.success {
+  height: 5.333333333333334vw;
+  position: absolute;
+  left: 37.06666666666666vw;
+  top: 10.584958217270195vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.success img {
+  width: 5.333333333333334vw;
+  height: 5.333333333333334vw;
+  margin-right: 2.666666666666667vw;
+}
+.success span {
+  font-size: 16px;
+  color: #000;
+}
+.state {
+  width: 100%;
+  font-size: 14px;
+  color: #050505;
+  font-weight: lighter;
+  position: absolute;
+  left: 0vw;
+  top: 15.87743732590529vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

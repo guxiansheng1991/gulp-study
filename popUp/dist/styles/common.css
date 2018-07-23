@@ -1,0 +1,13 @@
+/* 调用示例: border-width(border-left, 1px, #000000) */
+/* 
+转换vw设计稿的px宽度函数 
+本设计稿是375 * 718
+*/
+.tip {
+  color: #f5f5f5;
+  font-size: 12px;
+}
+body {
+  margin: 0;
+  padding: 0;
+}

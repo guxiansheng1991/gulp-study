@@ -1,1 +1,0 @@
-"use strict";var test=10;console.log(test);var arr=[1,2,3,4,5];arr.filter(function(r){return console.log(r),!0});

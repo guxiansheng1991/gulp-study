@@ -1,0 +1,169 @@
+@import './common.styl'
+
+header-height = 94
+rule-color =  #cccccc
+
+body {
+  position: relative
+  .imgs {
+    width: 100%
+    padding: 0 mvw(31)
+    background #F5F5F5
+    box-sizing: border-box
+    img {
+      width: 100%
+      vertical-align: middle
+    }
+  }
+  .rules {
+    width: 100%
+    background #ffffff;
+    padding: mvw(23) mvw(23) mvw(70)
+    box-sizing: border-box
+    color: rule-color 
+    font-size: 14px
+    .rules-title {
+      height: 0
+      border-width(border-bottom, 1px,rule-color)
+      .rules-title-text {
+        display: flex 
+        justify-content: center
+        align-items: center 
+        div {
+          padding: 0 mvw(10)
+          background: #ffffff
+          margin-top: -10px
+          z-index: 10
+        }
+      }
+    }
+  }
+  .join {
+    width: mvw(202)
+    height: mvw(47)
+    position: fixed
+    left: mvw(86)
+    top: mvh(731 - header-height)  
+    background: rgb(248,230,56)
+    border-radius: 20px
+    display: flex
+    justify-content: center 
+    align-items: center
+    box-shadow 0 0 10px 1px #cccccc
+    z-index: 11
+  }
+  /**
+    高度都使用px布局,因为输入法弹起来会压缩整个页面的高度,造成元素的vh被压缩
+   */
+  .check {
+    width: mvw(375)
+    height: mvh(718)
+    background: rgba(0,0,0,0.3)
+    position: fixed
+    left: 0
+    top: 0
+    padding-top: mvh(200)
+    box-sizing: border-box
+    z-index: 100
+    display: flex
+    flex-direction: column
+    justify-content: flex-start
+    align-items: center
+    display: none
+    input {
+      border: none
+      outline: none
+    }
+    .wrapper {
+      width: mvw(315)
+      height: 218px
+      background: #ffffff
+      border-radius: 5px
+      padding: mvw(22)
+      box-sizing: border-box
+      .title {
+        font-size: 16px
+        color: #4A4A4A
+        display: flex
+        justify-content: center 
+        align-items: center
+      }
+      .phone {
+        height: 66px
+        display: flex
+        justify-content: center 
+        align-items: flex-end
+        .content {
+          width: mvw(271)
+          height: 46px
+          border-radius: 5px
+          background #f5f5f5
+          display: flex
+          justify-content: space-between 
+          align-items: center
+          font-size: 14px
+          .input {
+            display: flex
+            justify-content: center
+            align-items: center
+            input {
+              display: inline-block
+              width: 80%
+              background: none
+            }
+          }
+          .btn {
+            width: mvw(98)
+            height: 30px
+            display: flex
+            justify-content: center
+            align-items: center
+            border-width(border-left, 1px, #000000)
+          }
+        }
+      }
+      .verification {
+        height: 66px
+        display: flex
+        justify-content: center 
+        align-items: flex-end
+        .content {
+          width: mvw(271)
+          height: 46px
+          display: flex
+          justify-content: space-between
+          align-items: center
+          font-size: 14px
+          .input {
+            width: mvw(46)
+            height: 46px
+            background: #f5f5f5
+            input {
+              display: inline-block
+              width: 100%
+              height: 100%
+              background: rgba(0,0,0,0)
+              text-align: center
+            }
+          }
+        }
+      }
+    }
+    .close {
+      width: mvw(315)
+      height: 50px
+      display: flex
+      justify-content: center
+      align-items: center
+      span {
+        width: 26px
+        height: 26px
+        background #ffffff
+        border-radius: 50% 50%
+        display: flex
+        justify-content: center
+        align-items: center
+      }
+    }
+  }
+}
