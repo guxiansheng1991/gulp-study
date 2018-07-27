@@ -1,6 +1,7 @@
 @import './common.styl'
 
 header-height = 94
+rule-color =  #9A9B9D
 
 body {
   position: relative
@@ -20,7 +21,7 @@ body {
 .success {
   height: mvw(20)
   position: absolute
-  left: mvw(139)
+  left: mvw(120)
   top: mvh(170 - header-height)
   display: flex
   justify-content: center
@@ -37,13 +38,15 @@ body {
 }
 .state {
   width: 100%
-  font-size: 14px
-  color: #050505
-  font-weight: lighter
+  padding: 0 mvw(23)
+  box-sizing: border-box
   position: absolute
   left: mvw(0)
   top: mvh(208 - header-height)
-  display: flex
-  justify-content: center
-  align-items: center
+  p {
+    color: rule-color 
+    font-size: 14px
+    // font-weight: lighter
+    text-align: center
+  }
 }

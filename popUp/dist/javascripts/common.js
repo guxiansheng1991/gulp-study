@@ -1,3 +1,5 @@
+'use strict';
+
 function toast(text) {
     var close = function () {
         var toastWrapper = document.createElement('div');
@@ -20,7 +22,7 @@ function getUrl() {
     var baseProduct = 'https://m.innersect.net/innersect-api';
 
     var hostname = window.location.hostname;
-    if (hostname != 'product') {
+    if (hostname != 'm.innersect.net') {
         return base;
     } else {
         return baseProduct;
@@ -32,12 +34,12 @@ function get(url, data, cb) {
         type: 'GET',
         url: getUrl() + url,
         data: data,
-        success: function (data, status, xhr) {
+        success: function success(data, status, xhr) {
             cb(data, status, xhr);
         },
-        error: function (xhr, errorType, error) {
+        error: function error(xhr, errorType, _error) {
             toast('网络请求失败,请重试');
-            console.log(xhr, errorType, error);
+            console.log(xhr, errorType, _error);
         }
     });
 }
@@ -49,12 +51,12 @@ function post(url, data, cb) {
         data: JSON.stringify(data),
         dataType: 'json',
         contentType: 'application/json',
-        success: function (data, status, xhr) {
+        success: function success(data, status, xhr) {
             cb(data, status, xhr);
         },
-        error: function (xhr, errorType, error) {
+        error: function error(xhr, errorType, _error2) {
             toast('网络请求失败,请重试');
-            console.log(xhr, errorType, error);
+            console.log(xhr, errorType, _error2);
         }
     });
 }

@@ -1,15 +1,30 @@
-window.addEventListener('DOMContentLoaded', function(e) {
+window.addEventListener('DOMContentLoaded', function(e) {  
   var join = document.getElementById('join');
   var modelView = document.getElementById('check');
   var close = document.getElementById('close');
   var getCheckBtn = document.getElementById('getCheckBtn');
+  var nums = document.getElementById('nums');
+  var checkNum = document.getElementById('checkNumber')
   var checkNums = '';
   var phoneNumber = '';
   var myInterval = null;
   var timeLength = 60;
   var time = timeLength;
-  var activityId = 1;
-
+  var getFlag = true;
+  var activityId = -1;
+  var rootPath = '';
+  if(window.location.hostname == 'localhost' 
+      || window.location.hostname.indexOf('192.168.1') != -1) {
+    rootPath = '';
+  }else {
+    rootPath = '/h5collection/popUp';
+  }
+  /** 获取activityId */ 
+  if(!window.location.search.split('&')[0]) {
+    toast('缺少activityId参数');
+    return ;
+  }
+  activityId = window.location.search.split('&')[0].split('=')[1];
   /** 显示model */ 
   function showModel(flag) {
     if(flag) {
@@ -37,19 +52,16 @@ window.addEventListener('DOMContentLoaded', function(e) {
     }
     var body = {
       "countryCode": "+86",
-      "extensionId": 0,
+      "extensionId": activityId,
       "mobile": phoneNumber,
       "vcode": checkNums
     };
     post('/extension/verify', body, function(data, status, xhr) {
       if(data.code == 200) {
-        window.location.href = window.location.origin + '/dist/views/success.html';
+        window.location.href = window.location.origin + rootPath +'/dist/views/success.html';
       }else {
-        var nums = document.getElementsByClassName('num');
         checkNums = '';
-        for(var i=0;i<nums.length;i++) {
-          nums[i].value = '';
-        }
+        checkNum.value = '';
         toast(data.msg);
       }
     });
@@ -64,6 +76,9 @@ window.addEventListener('DOMContentLoaded', function(e) {
 
   /** 获取验证码 */ 
   getCheckBtn.addEventListener('click', function(e) {
+    if(!getFlag) {
+      return ;
+    }
     phoneNumber = document.getElementById('phoneNumber').value;
     if(!phoneNumber) {
       toast('请输入手机号码');
@@ -84,31 +99,24 @@ window.addEventListener('DOMContentLoaded', function(e) {
           clearInterval(myInterval);
           e.target.innerHTML = '重新获取';  
           time = timeLength;
+          getFlag = true;
           return ;
+        }else {
+          getFlag = false;
+          e.target.innerHTML = --time + ' s';
         }
-        e.target.innerHTML = --time + ' s';
       }, 1000);
     });
   });
 
   /** 输入框输入事件*/ 
-  window.inputChange = function(e) {
-    var nums = document.getElementsByClassName('num');
-    checkNums = '';
-    for(var i=0;i<nums.length;i++) {
-      checkNums += '' + nums[i].value;
-      if(!nums[i].value) {
-        nums[i].focus();
-        break;
-      }else {
-        // 输入验证码完成
-        if(i == (nums.length -1)) {
-          nums[i].blur();
-          verify();
-        }
-      }
+  checkNum.addEventListener('input', function(e) {
+    checkNums = e.target.value;
+    if(checkNums.length >= 4) {
+      e.target.blur();
+      verify();
     }
-  }
+  });
 
   /** 显示Model */ 
   join.addEventListener('click', function(e) {
@@ -121,7 +129,6 @@ window.addEventListener('DOMContentLoaded', function(e) {
   close.addEventListener('click', function(e) {
     showModel(false);
   });
-  
   /** 获取基本信息 */ 
   getBaseInfor();
 });

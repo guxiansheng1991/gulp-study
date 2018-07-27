@@ -12,50 +12,71 @@ const stylus = require('gulp-stylus');
  * 通用的编译函数
  * @param {项目的相对于根目录的路径,如demo1} projectRootPath 
  */
-function util(projectRootPath) {
+
+// function util(projectRootPath) {
+//   browserSync({
+//     server: {
+//       baseDir: `${projectRootPath}`
+//     }
+//   });
+//   gulp.src(`${projectRootPath}/src/**/*.styl`)
+//     // .pipe(stylus({compress: true}))
+//     .pipe(stylus())
+//     .pipe(gulp.dest(`${projectRootPath}/dist/`));
+//     // .pipe(browserSync.reload({stream:true}));
+//   gulp.src(`${projectRootPath}/src/**/*.js`)
+//     .pipe(babel())
+//     // .pipe(uglify())
+//     .pipe(gulp.dest(`${projectRootPath}/dist/`));
+//     // .pipe(browserSync.reload({stream:true}));
+//   gulp.src(`${projectRootPath}/src/**/*.html`)
+//     .pipe(htmlmin({ collapseWhitespace: true }))
+//     .pipe(gulp.dest(`${projectRootPath}/dist/`))
+//     .pipe(browserSync.reload({stream:true}));
+//   console.log('完成');
+// }
+
+
+let popup = 'popup';
+
+gulp.task('browserSync', function() {
   browserSync({
     server: {
-      baseDir: `${projectRootPath}`
+      baseDir: `${popup}`
     }
   });
-  // gulp.src(`${projectRootPath}/src/**/*.less`)
-  //   .pipe(less())
-  //   .pipe(cleanCSS())
-  //   .pipe(gulp.dest(`${projectRootPath}/dist/`));
-  gulp.src(`${projectRootPath}/src/**/*.styl`)
+});
+
+gulp.task('styl', function() {
+  gulp.src(`${popup}/src/**/*.styl`)
     // .pipe(stylus({compress: true}))
     .pipe(stylus())
-    .pipe(gulp.dest(`${projectRootPath}/dist/`));
-  gulp.src(`${projectRootPath}/src/**/*.js`)
+    .pipe(gulp.dest(`${popup}/dist/`))
+    .pipe(browserSync.reload({stream:true}));
+});
+
+gulp.task('js', function() {
+  gulp.src(`${popup}/src/**/*.js`)
     .pipe(babel())
     // .pipe(uglify())
-    .pipe(gulp.dest(`${projectRootPath}/dist/`));
-  gulp.src(`${projectRootPath}/src/**/*.html`)
+    .pipe(gulp.dest(`${popup}/dist/`))
+    .pipe(browserSync.reload({stream:true}));
+});
+
+gulp.task('html', function() {
+  gulp.src(`${popup}/src/**/*.html`)
     .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest(`${projectRootPath}/dist/`))
-    .pipe(browserSync.reload({stream: true}));
-}
-
-/**
- * 如需编译不同的项目,需要更改package.json中的script,可复制其中的dev和build命令
- * 项目目录需要src,lib,主要代码应放在src下
- * 新项目运行在 localhost:3000/dist/index.html 中
- */
-let popup = 'popup';
-gulp.task(popup, function() {
-  util(popup);
-});
-gulp.task(`${popup}_watch`, function() {
-  gulp.watch(`${popup}/**/*`, [`${popup}`]);
+    .pipe(gulp.dest(`${popup}/dist/`))
+    .pipe(browserSync.reload({stream:true}));
 });
 
-/** 新项目示例如下
- * "build": "gulp task2",
- * "dev": "gulp task2_watch"
- */
-// gulp.task('task2_watch', function() {
-//   let baseDir = 'demo2';
-//   gulp.watch(`${baseDir}/**/*`, function() {
-//     util(baseDir);
-//   });
+gulp.task(`${popup}_watch`, ['browserSync', 'styl', 'js', 'html'], function() {
+  gulp.watch(`${popup}/**/*`, ['styl', 'js', 'html']);
+});
+
+// gulp.task(popup, function() {
+//   util(popup);
+// });
+// gulp.task(`${popup}_watch`, function() {
+//   gulp.watch(`${popup}/**/*`, [`${popup}`]);
 // });

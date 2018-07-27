@@ -22,7 +22,7 @@ function getUrl() {
     var baseProduct = 'https://m.innersect.net/innersect-api';
 
     var hostname = window.location.hostname;
-    if(hostname != 'product') {
+    if(hostname != 'm.innersect.net') {
         return base;
     }else {
         return baseProduct;
