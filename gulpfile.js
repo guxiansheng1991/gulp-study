@@ -7,43 +7,15 @@ const htmlmin = require('gulp-htmlmin');
 const browserSync = require('browser-sync');
 const stylus = require('gulp-stylus');
 
-
-/**
- * 通用的编译函数
- * @param {项目的相对于根目录的路径,如demo1} projectRootPath 
- */
-
-// function util(projectRootPath) {
-//   browserSync({
-//     server: {
-//       baseDir: `${projectRootPath}`
-//     }
-//   });
-//   gulp.src(`${projectRootPath}/src/**/*.styl`)
-//     // .pipe(stylus({compress: true}))
-//     .pipe(stylus())
-//     .pipe(gulp.dest(`${projectRootPath}/dist/`));
-//     // .pipe(browserSync.reload({stream:true}));
-//   gulp.src(`${projectRootPath}/src/**/*.js`)
-//     .pipe(babel())
-//     // .pipe(uglify())
-//     .pipe(gulp.dest(`${projectRootPath}/dist/`));
-//     // .pipe(browserSync.reload({stream:true}));
-//   gulp.src(`${projectRootPath}/src/**/*.html`)
-//     .pipe(htmlmin({ collapseWhitespace: true }))
-//     .pipe(gulp.dest(`${projectRootPath}/dist/`))
-//     .pipe(browserSync.reload({stream:true}));
-//   console.log('完成');
-// }
-
-
-let popup = 'popup';
+let popup = 'popUp';
 
 gulp.task('browserSync', function() {
   browserSync({
     server: {
-      baseDir: `${popup}`
-    }
+      baseDir: `${popup}`,
+      index: `/dist/index.html`
+    },
+    port: 3000
   });
 });
 
